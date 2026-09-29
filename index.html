@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Year 7 Computing – Flowchart &amp; Pseudocode Mission</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#eef3fb;--card:#fff;--tx:#0f1b33;--mut:#54617d;--ac:#2563eb;--ac2:#7c3aed;--ok:#16a34a;--bad:#dc2626;--bd:#c9d4ea;--sh:#e8effc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1020;--card:#151c33;--tx:#e8eeff;--mut:#9aa8c9;--ac:#5b8cff;--ac2:#a78bfa;--ok:#34d399;--bad:#f87171;--bd:#2a3558;--sh:#1c2544}}
+:root[data-theme=dark]{--bg:#0b1020;--card:#151c33;--tx:#e8eeff;--mut:#9aa8c9;--ac:#5b8cff;--ac2:#a78bfa;--ok:#34d399;--bad:#f87171;--bd:#2a3558;--sh:#1c2544}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.45 "Segoe UI",system-ui,Arial,sans-serif}
+#w{max-width:1000px;margin:0 auto;padding:12px}
+.hud{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px 14px}
+.trail{display:flex;gap:6px;flex-wrap:wrap}.trail span{padding:4px 10px;border-radius:99px;background:var(--sh);color:var(--mut);font-size:14px;font-weight:600}.trail .on{background:var(--ac);color:#fff}.trail .dn{background:var(--ok);color:#fff}
+.bar{height:8px;background:var(--sh);border-radius:9px;margin:8px 0 14px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:width .4s}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px;margin-bottom:14px;animation:up .3s}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+h1{font-size:40px;margin:6px 0}h2{font-size:26px;margin:10px 0}h3{margin:8px 0}
+.btn{font:700 20px inherit;font-family:inherit;padding:14px 26px;border:0;border-radius:12px;background:var(--ac);color:#fff;cursor:pointer;margin:6px 6px 0 0}
+.btn:hover{filter:brightness(1.1)}.btn.g{background:var(--sh);color:var(--tx);border:1px solid var(--bd)}.btn[disabled]{opacity:.4;cursor:default}
+input[type=text]{font:22px inherit;font-family:inherit;padding:12px 16px;border-radius:12px;border:2px solid var(--bd);background:var(--bg);color:var(--tx);width:min(100%,380px)}
+.tag{display:inline-block;background:var(--sh);border-radius:99px;padding:3px 12px;font-size:14px;font-weight:700;color:var(--mut);margin-right:6px}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.opt{font:600 19px inherit;font-family:inherit;text-align:left;padding:14px 16px;border:2px solid var(--bd);border-radius:12px;background:var(--bg);color:var(--tx);cursor:pointer}
+.opt:hover{border-color:var(--ac)}.opt.sel{border-color:var(--ac);background:var(--sh)}.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,transparent)}.opt.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,transparent)}
+.vis .opt{display:flex;justify-content:center;align-items:center}.lock{pointer-events:none}
+.sy{max-width:100%;height:auto}.sy *:not(text){fill:var(--sh);stroke:var(--ac);stroke-width:2.5}.sy text{fill:var(--tx);font:600 14px sans-serif}
+.fc{display:flex;flex-direction:column;align-items:center}.ar{color:var(--ac);font-weight:900;line-height:1;font-size:18px}.nt{font-size:12px;color:var(--mut)}
+.fb{margin-top:14px;padding:14px 16px;border-radius:12px;border-left:6px solid}.fb.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}.fb.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.pre{background:var(--sh);border-radius:12px;padding:10px 14px;margin:8px 0;font-size:17px}
+.row{display:flex;gap:12px;align-items:center;margin:8px 0;flex-wrap:wrap}.row>:first-child{flex:1;min-width:150px;font-weight:600}
+select{font:18px inherit;font-family:inherit;padding:10px;border-radius:10px;border:2px solid var(--bd);background:var(--bg);color:var(--tx);min-width:220px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.big{font-size:48px;font-weight:800;color:var(--ac)}
+.mini{height:10px;background:var(--sh);border-radius:9px;overflow:hidden}.mini i{display:block;height:100%;background:var(--ok)}
+.cd{font:16px/1.5 Consolas,monospace;white-space:pre;background:var(--sh);border-radius:12px;padding:12px 16px;margin:8px 0;overflow-x:auto;text-align:left}.msg .opt{display:block;width:100%;margin:6px 0;font-weight:500}.rv{border-top:1px solid var(--bd);padding:10px 0}
+@media(max-width:600px){h1{font-size:30px}.btn{font-size:17px;padding:12px 18px}}
+</style></head><body><div id="w"><div id="hud"></div><div id="app"></div></div>
+<script>
+const $=s=>document.querySelector(s),sh=a=>{a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+function sym(k,t='',w=210,h=48){let x=w/2,y=h/2,s=`<svg class="sy" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">`;
+if(k=='o')s+=`<rect x="2" y="2" width="${w-4}" height="${h-4}" rx="${h/2}"/>`;else if(k=='r')s+=`<rect x="2" y="2" width="${w-4}" height="${h-4}"/>`;
+else if(k=='d')s+=`<polygon points="${x},2 ${w-2},${y} ${x},${h-2} 2,${y}"/>`;else if(k=='p')s+=`<rect x="2" y="2" width="${w-4}" height="${h-4}"/><line x1="16" y1="2" x2="16" y2="${h-2}"/><line x1="${w-16}" y1="2" x2="${w-16}" y2="${h-2}"/>`;
+else s+=`<circle cx="${x}" cy="${y}" r="${y-2}"/>`;return s+`<text x="${x}" y="${y+5}" text-anchor="middle">${t}</text></svg>`}
+const fc=n=>`<div class="fc">`+n.map((a,i)=>(i?'<div class="ar">↓</div>':'')+sym(a[0],a[1],230,a[0]=='d'?76:44)+(a[2]?`<div class="nt">${a[2]}</div>`:'')).join('')+`</div>`;
+const V=(k,w=130,h=70)=>sym(k,'',w,h);
+const G=[["o","Start"],["r","Enter username"],["r","Enter password"],["d","Is the password correct?","Yes → Welcome · No → Try again"],["o","End"]];
+const PC="START\nINPUT username\nINPUT password\nIF password is correct THEN\n  OUTPUT “Welcome”\nELSE\n  OUTPUT “Try again”\nEND IF\nEND";
+const cd=t=>`<div class="cd">${t}</div>`,N=g=>g.map(x=>[x[0],x[1]]);
+const PRE="<b>Algorithm – Logging in:</b> 1 Start · 2 Enter username · 3 Enter password · 4 Is the password correct? (yes: show Welcome, no: show Try again) · 5 End";
+const Q=[
+{m:0,t:"multi",p:2,c:"digital identity · digital footprint",q:"Tap ALL the things that make up your digital identity.",a:["Your social media accounts and usernames","Photos and posts you share","Your search history and online activity"],w:["Your bedroom furniture","A drawing kept in your school bag"],e:"Your digital identity is made of your accounts, posts, photos and the footprint your activity leaves online."},
+{m:0,t:"mc",p:1,c:"cybersecurity · strong passwords",q:"Which is the STRONGEST password?",a:"T7!rocket_Lime42",w:["password123","Ahmed2012","qwerty"],e:"Strong passwords are long and mix letters, numbers and symbols – and should be unique for each account."},
+{m:0,t:"tf",p:1,c:"two-factor authentication",q:"True or False: Two-factor authentication asks for a second proof it's you, such as a code sent to your phone.",a:true,e:"A password plus a second check makes it much harder for someone else to log in."},
+{m:0,t:"mc",p:2,c:"secure website",q:"What should you check before entering personal details on a website?",a:"That the website is secure (padlock and https)",w:["That it has lots of adverts","That it has bright colours","That it has a funny name"],e:"Only enter personal details on a secure website."},
+{m:1,t:"mc",p:1,c:"start/end symbol",q:"Which symbol is used for Start / End?",a:V("o"),w:[V("r"),V("d"),V("p")],e:"An oval marks the start and the end of a flowchart."},
+{m:1,t:"match",p:2,c:"flowchart symbols",q:"Match each symbol to its name.",a:[[V("r",110,50),"Process"],[V("o",110,50),"Start / End"],[V("d",110,60),"Decision"]],e:"Rectangle = process, oval = start/end, diamond = decision."},
+{m:1,t:"mc",p:1,c:"decision",q:"Which of these needs a decision (diamond) symbol?",a:"Is the password correct?",w:["Enter your password","Open the app","Show the home page"],e:"A question with a Yes/No answer needs a decision symbol."},
+{m:1,t:"order",p:2,c:"sequence",q:"Put the steps for logging in to a website into the correct sequence.",a:["Open the website","Type your username","Type your password","Click Log in"],e:"A sequence is the order of steps – the order must be right for the algorithm to work."},
+{m:2,t:"mc",p:1,c:"pseudocode",q:"What is pseudocode?",a:"A short, clear way to plan a program using plain, code-like statements",w:["A real programming language you must install","A type of flowchart symbol","A secret code for passwords"],e:"Pseudocode plans an algorithm in plain statements. It isn't tied to any one language."},
+{m:2,t:"tf",p:1,c:"pseudocode",q:"True or False: Pseudocode must follow the exact rules of one programming language.",a:false,e:"Pseudocode is language-free – it only needs to be clear and precise."},
+{m:2,t:"match",p:2,c:"pseudocode statements",q:"Match each pseudocode word to its job.",a:[["INPUT","Get something from the user"],["OUTPUT","Show a message or result"],["IF … THEN … ELSE","Make a decision"]],e:"INPUT gets data, OUTPUT shows it, IF/THEN/ELSE chooses between two paths."},
+{m:2,t:"match",p:2,c:"flowchart ↔ pseudocode",q:"Match each flowchart symbol to its pseudocode line.",a:[[sym("r","Enter username",190,44),"INPUT username"],[sym("d","Is password correct?",190,64),"IF password is correct THEN"],[sym("o","Start",190,44),"START"]],e:"Each flowchart symbol has a matching pseudocode line: process → statement, diamond → IF."},
+{m:2,t:"mc",p:2,c:"process · pseudocode",q:"Which pseudocode line matches a rectangle that says “Show Welcome”?",a:"OUTPUT “Welcome”",w:["INPUT “Welcome”","IF “Welcome” THEN","END IF"],e:"Showing something is an action (process) and is written as OUTPUT."},
+{m:2,t:"mc",p:3,c:"comparing representations",q:"Which is a SIMILARITY between a flowchart and pseudocode?",a:"Both show the same steps in the same order",w:["Both use shapes and arrows","Both must be run on special software","Both are real programming languages"],e:"They look different but show the same steps and logic."},
+{m:3,t:"order",p:3,c:"pseudocode · selection",q:"Put this pseudocode in the correct order.",a:["INPUT password","IF password is correct THEN","OUTPUT “Welcome”","ELSE","OUTPUT “Try again”","END IF"],e:"IF … THEN comes first, then ELSE for the other path, then END IF closes the decision."},
+{m:3,t:"mc",p:3,c:"flowchart · sequence · symbols",q:"Which flowchart matches the algorithm?",a:fc(N(G)),w:[fc(N([G[0],G[1],G[3],G[2],G[4]])),fc(N([G[0],G[1],G[2],["r","Is the password correct?"],G[4]])),fc(N([G[0],G[1],G[2],G[3],["d","End"]]))],e:"Check the ORDER and the SYMBOLS: password entered before the check, a diamond for the question, an oval for End."},
+{m:3,t:"mc",p:3,c:"checking pseudocode",v:cd("START\nINPUT username\nIF password is correct THEN\n  INPUT password\n  OUTPUT “Welcome”\nEND IF\nEND"),q:"What is wrong with this pseudocode?",a:"The IF line comes before INPUT password – the order is wrong",w:["START should be at the end","OUTPUT should be INPUT","Nothing – it is correct"],e:"The password must be entered before it can be checked, so INPUT password must come first."},
+{m:3,t:"mc",p:2,c:"comparing representations",q:"Which is a DIFFERENCE between a flowchart and pseudocode?",a:"A flowchart shows the logic visually with shapes; pseudocode is short text lines",w:["Only pseudocode shows the order of steps","Only a flowchart has a start","A flowchart is a real programming language"],e:"Flowcharts show the shape of the logic. Pseudocode is more compact."},
+{m:3,t:"tf",p:1,c:"algorithm · comparing",q:"True or False: A flowchart and pseudocode for the same algorithm should give the same result.",a:true,e:"They are two ways of writing the same algorithm, so the steps and logic must match."},
+{m:3,t:"mc",p:3,c:"selection · decision",q:"A diamond in a flowchart splits the flow into two paths. What does pseudocode use for this?",a:"IF … THEN … ELSE",w:["START … END","INPUT … OUTPUT","A rectangle"],e:"Selection changes the flow: diamond in a flowchart = IF/THEN/ELSE in pseudocode."}];
+const M=[["🛡️","Identity Defender","5–7 min","Digital identity and staying safe online."],["🔷","Flowchart Recall","5–7 min","Recall the flowchart symbols and sequence."],["⌨️","Pseudocode Decoder","8–10 min","Learn pseudocode and link it to flowcharts."],["🛠️","Flowchart + Pseudocode Builder","10–12 min","Check, fix and compare both representations."]];
+const REF=["describe what makes up my digital identity","describe two cybersecurity practices","recall flowchart symbols","represent an algorithm as a flowchart","represent an algorithm as pseudocode","compare a flowchart and pseudocode (similarity and difference)","use a decision (IF, THEN, ELSE) in both"];
+const S={scr:"w",qi:0,name:"",res:{},sel:null,ref:{},chk:{},rev:0,tv:0},TOT=Q.reduce((a,q)=>a+q.p,0);
+function prep(q,i){if(q.o)return;if(q.t=="mc"){let r=sh(q.w),p=(i*3+1)%(r.length+1);r.splice(p,0,q.a);q.o=r;q.ci=p}
+else if(q.t=="multi")q.o=sh([...q.a.map(x=>[x,1]),...q.w.map(x=>[x,0])]);
+else if(q.t=="order"){let o;do o=sh(q.a);while(o.join()==q.a.join());q.o=o}
+else if(q.t=="match"){q.R=sh([...new Set(q.a.map(x=>x[1]))])}}
+function st(){let c=0,pts=0,m=M.map(()=>[0,0]);Q.forEach((q,i)=>{m[q.m][1]++;let r=S.res[i];if(r&&r.ok){c++;pts+=q.p;m[q.m][0]++}});return{c,w:Q.length-c,pts,pc:Math.round(c/Q.length*100),m}}
+function hud(){if(S.scr=="w"){$("#hud").innerHTML="";return}let cur=S.scr=="q"||S.scr=="i"?Q[S.qi].m:(S.scr=="f"?4:5),t=["M1","M2","M3","M4","Final"].map((n,i)=>`<span class="${i<cur?"dn":i==cur?"on":""}">${n}</span>`).join(""),done=Object.keys(S.res).length;
+$("#hud").innerHTML=`<div class="hud"><b>👤 ${S.name}</b><div class="trail">${t}</div><b>⭐ ${st().pts}/${TOT} pts</b><button class="btn g" data-a="restart" style="font-size:15px;padding:6px 12px;margin:0">↻ Restart</button></div><div class="bar"><i style="width:${done/Q.length*100}%"></i></div>`}
+function body(q,r){let h="";if(q.t=="mc"){h=`<div class="opts ${q.o[0][0]=="<"?"vis":""}">`+q.o.map((o,i)=>`<button class="opt ${r?(i==q.ci?"ok":r.i===i?"no":""):""}" data-a="pick" data-i="${i}">${o}</button>`).join("")+"</div>"}
+else if(q.t=="tf"){h=`<div class="opts">`+[1,0].map(v=>`<button class="opt ${r?(!!v==q.a?"ok":r.i===v?"no":""):""}" data-a="pick" data-i="${v}">${v?"✔ True":"✘ False"}</button>`).join("")+"</div>"}
+else if(q.t=="multi"){let s=r?r.sel:S.sel;h=`<div class="${q.a[0].length>30?"msg":"opts"}">`+q.o.map((o,i)=>`<button class="opt ${r?(o[1]?"ok":s.includes(i)?"no":""):s.includes(i)?"sel":""}" data-a="tog" data-i="${i}">${o[0]}</button>`).join("")+"</div>"}
+else if(q.t=="order"){let s=r?r.sel:S.sel;h=`<p><b>Your sequence:</b></p><div>`+(s.length?s.map((i,n)=>`<button class="opt ${r?(q.o[i]==q.a[n]?"ok":"no"):""}" style="margin:4px 0;display:block;width:100%" data-a="un" data-i="${n}">${n+1}. ${q.o[i]}</button>`).join(""):`<i style="color:var(--mut)">Tap the steps below in order…</i>`)+`</div>`+(r?"":`<p><b>Steps:</b></p><div class="opts">`+q.o.map((o,i)=>s.includes(i)?"":`<button class="opt" data-a="pl" data-i="${i}">${o}</button>`).join("")+`</div><button class="btn g" data-a="rs">↺ Clear</button>`)}
+else if(q.t=="match"){h=q.a.map((p,i)=>{let v=r?r.sel[i]:S.sel[i]||"";return`<div class="row"><div>${p[0]}</div><select data-m="${i}" ${r?"disabled":""}><option value="">Choose…</option>${q.R.map(o=>`<option ${o==v?"selected":""}>${o}</option>`).join("")}</select>${r?(v==p[1]?"✅":"❌ "+p[1]):""}</div>`}).join("")}
+return h}
+function done(ok,sa,ca){let q=Q[S.qi];S.res[S.qi]={ok,sa,ca,sel:Array.isArray(S.sel)?[...S.sel]:{...S.sel},i:S.pick};R()}
+function chk(){let q=Q[S.qi],ok,sa,ca;
+if(q.t=="multi"){let c=q.o.map((o,i)=>o[1]?i:-1).filter(i=>i>=0);ok=c.length==S.sel.length&&c.every(i=>S.sel.includes(i));sa=S.sel.map(i=>q.o[i][0]).join("; ")||"(nothing selected)";ca=c.map(i=>q.o[i][0]).join("; ")}
+else if(q.t=="order"){ok=S.sel.map(i=>q.o[i]).join("|")==q.a.join("|");sa=S.sel.map(i=>q.o[i]).join(" → ");ca=q.a.join(" → ")}
+else{ok=q.a.every((p,i)=>S.sel[i]==p[1]);sa=q.a.map((p,i)=>`${i+1}) ${S.sel[i]||"?"}`).join(", ");ca=q.a.map((p,i)=>`${i+1}) ${p[1]}`).join(", ")}
+done(ok,sa,ca)}
+function qScr(){let q=Q[S.qi],r=S.res[S.qi];prep(q,S.qi);if(!S.sel)S.sel=q.t=="match"?{}:[];
+let ready=q.t=="order"?S.sel.length==q.o.length:q.t=="match"?q.a.every((p,i)=>S.sel[i]):q.t=="multi"?S.sel.length>0:0,manual=["multi","order","match"].includes(q.t);
+let ca=r&&r.ca;
+return`<div class="card"><span class="tag">${M[q.m][0]} Mission ${q.m+1} · Question ${S.qi+1}/${Q.length}</span><span class="tag">${["Easy","Medium","Challenge"][q.p-1]} · ${q.p} pt${q.p>1?"s":""}</span>${q.m==3?`<div class="pre">${PRE}</div>`:""}${q.v||""}<h2>${q.q}</h2><div id="qa" class="${r?"lock":""}">${body(q,r)}</div>
+${r?`<div class="fb ${r.ok?"ok":"no"}"><b>${r.ok?"✓ Correct!":"Not quite."}</b> ${q.e}${r.ok?"":`<br><b>Correct answer:</b> ${ca}`}</div>`:""}
+<div style="margin-top:12px">${S.qi>0?`<button class="btn g" data-a="back">← Back</button>`:""}${!r&&manual?`<button class="btn" data-a="chk" ${ready?"":"disabled"}>Check answer</button>`:""}${r?`<button class="btn" data-a="next">${S.qi==Q.length-1?"See my results →":"Next →"}</button>`:""}</div></div>`}
+function intro(){let m=S.qi?Q[S.qi].m:0,d=M[m],extra="";
+if(m==1)extra=`<div class="grid" style="margin:12px 0;text-align:center">${[["o","Start / End"],["r","Process"],["d","Decision"]].map(a=>`<div>${sym(a[0],"",120,60)}<br><b>${a[1]}</b></div>`).join("")}<div style="font-size:40px;color:var(--ac)">→<br><span style="font-size:16px;color:var(--tx)"><b>Arrow = order</b></span></div></div>`;
+if(m==2)extra=`<div class="grid" style="margin:12px 0"><div>${fc(G)}</div>${cd(PC)}</div>`;
+if(m==3)extra=`<div class="pre">${PRE}</div>`;
+return`<div class="card"><div style="font-size:56px">${d[0]}</div><h1>Mission ${m+1}: ${d[1]}</h1><p><span class="tag">⏱ ${d[2]}</span> ${d[3]}</p>${extra}<button class="btn" data-a="go">Start Mission ${m+1} ▶</button></div>`}
+function results(){let s=st(),msg=s.pc>=90?"🏆 Mission accomplished! You are a Flowchart Master.":s.pc>=70?"🌟 Great work, Detective! Check your mistakes to reach the top.":s.pc>=50?"👍 Good effort! Use “Check my mistakes” to see what to practise.":"💪 Keep going, Detective! Review your mistakes and try again.";
+let miss=Q.map((q,i)=>[q,i]).filter(x=>!S.res[x[1]].ok),con=[...new Set(miss.flatMap(x=>x[0].c.split(" · ")))];
+return`<div class="card"><h1>🎯 Mission Report: ${S.name}</h1><div class="grid"><div><div class="big">${s.c}/${Q.length}</div>Score (correct)</div><div><div class="big">${s.pc}%</div>Accuracy</div><div><div class="big">${s.pts}/${TOT}</div>Points earned</div><div><div class="big">${s.w}</div>Incorrect</div></div><h3>${msg}</h3>
+<div class="grid">${M.map((d,i)=>`<div>${d[0]} <b>Mission ${i+1}</b> ${s.m[i][0]}/${s.m[i][1]}<div class="mini"><i style="width:${s.m[i][0]/s.m[i][1]*100}%"></i></div></div>`).join("")}</div>
+<button class="btn" data-a="rev">🔍 CHECK MY MISTAKES</button><button class="btn g" data-a="tv">👩‍🏫 Teacher view</button></div>
+${S.rev?`<div class="card"><h2>Check my mistakes</h2>${miss.length?miss.map(x=>`<div class="rv"><b>Question ${x[1]+1}</b> (Mission ${x[0].m+1}) – ${x[0].q}<br><b>Your answer:</b> ${x[1]>=0&&S.res[x[1]].sa}<br><b>Correct answer:</b> ${S.res[x[1]].ca}<br>💡 ${x[0].e}<br><span class="tag">Concept: ${x[0].c}</span></div>`).join(""):"🎉 No mistakes – brilliant!"}</div>`:""}
+${S.tv?`<div class="card"><h2>Teacher view</h2><p><b>${S.name}</b> – ${s.c}/${Q.length} (${s.pc}%), ${s.pts}/${TOT} points<br><b>Questions missed:</b> ${miss.map(x=>"Q"+(x[1]+1)).join(", ")||"none"}<br><b>Revise:</b> ${con.join(", ")||"nothing – secure!"}</p><button class="btn g" data-a="copy">📋 Copy summary</button></div>`:""}
+<div class="card"><h2>I can…</h2><div class="opts">${REF.map((t,i)=>`<button class="opt ${S.ref[i]?"sel":""}" data-a="ref" data-i="${i}">${S.ref[i]?"☑":"☐"} ${t}</button>`).join("")}</div><br><button class="btn" data-a="fin">Go to the Final Challenge 💻 ▶</button></div>`}
+function fin(){const L=["Read the algorithm below.","Find the sequence of steps.","Find the decision.","Plan it as a flowchart (paper or whiteboard).","Write it as pseudocode.","Build it in PictoBlox.","Test it twice: the right code, then a wrong one.","Compare: write one similarity and one difference between your flowchart and pseudocode."];
+return`<div class="card"><div style="font-size:56px">💻</div><h1>Final Challenge – Practical Task</h1><div class="fb ok"><b>The marked quiz is finished.</b> Now leave this game and open <b>PictoBlox</b> on your computer. Work individually or in pairs.</div>
+<div class="pre"><b>Algorithm – Secret code checker:</b> 1 Start · 2 Ask “What is the secret code?” · 3 If the answer is 2468, say “Access granted.” Otherwise say “Access denied.” · 4 End</div>
+<h3>Your mission (tap to tick)</h3><div class="opts">${L.map((t,i)=>`<button class="opt ${S.chk[i]?"sel":""}" data-a="ck" data-i="${i}">${S.chk[i]?"☑":"☐"} ${i+1}. ${t}</button>`).join("")}</div>
+<p>💡 PictoBlox hints: use <b>when flag clicked</b>, <b>ask and wait</b>, <b>if / else</b>, <b>answer</b> and <b>say</b>. The if/else block is your diamond and your IF … THEN … ELSE!</p>
+<div class="pre">🚀 <b>Challenge Level:</b> add a second decision (e.g. also check a username) and show it in both the flowchart and the pseudocode – OR – find and fix a flawed flowchart or pseudocode from a partner.</div><button class="btn g" data-a="res">← Back to results</button></div>`}
+function R(){hud();let h="";if(S.scr=="w")h=`<div class="card" style="text-align:center;padding:40px 20px"><div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">${sym("o","START",130,50)}${sym("r","MISSION",130,50)}${sym("d","?",130,50)}</div><h1>Year 7 Computing – Flowchart &amp; Pseudocode Mission</h1><p style="color:var(--mut)">Cambridge Lower Secondary Computing · Digital Detective</p><p><input id="nm" type="text" placeholder="Type your name" maxlength="30" value="${S.name}"></p><button class="btn" data-a="start" style="font-size:26px">START GAME ▶</button></div>`;
+else if(S.scr=="b")h=`<div class="card"><h1>🕵️ Mission Brief</h1><p style="font-size:22px">You are a <b>Digital Detective</b>, ${S.name}. Complete the missions, earn points, check your mistakes and complete the final computer challenge.</p><p><b>Easy = 1 point · Medium = 2 points · Challenge = 3 points.</b> You never lose points for checking your mistakes.</p><div class="trail" style="font-size:20px">${["Mission 1","Mission 2","Mission 3","Mission 4","Final Challenge"].map((n,i)=>`<span>${n}</span>${i<4?"→":""}`).join("")}</div><br><button class="btn" data-a="go">Begin ▶</button></div>`;
+else if(S.scr=="i")h=intro();else if(S.scr=="q")h=qScr();else if(S.scr=="r")h=results();else h=fin();
+$("#app").innerHTML=h;if(S.scr=="w")$("#nm").oninput=e=>S.name=e.target.value.trim()}
+function act(a,i){i=+i;let q=Q[S.qi];
+if(a=="start"){S.name=$("#nm").value.trim();if(!S.name){$("#nm").focus();return}S.scr="b"}
+else if(a=="go"){S.scr=S.scr=="b"?"i":"q"}
+else if(a=="pick"){S.pick=i;let ok=q.t=="tf"?!!i==q.a:i==q.ci;return done(ok,q.t=="tf"?(i?"True":"False"):q.o[i],q.t=="tf"?(q.a?"True":"False"):q.o[q.ci])}
+else if(a=="tog"){let k=S.sel.indexOf(i);k<0?S.sel.push(i):S.sel.splice(k,1)}
+else if(a=="pl")S.sel.push(i);else if(a=="un")S.sel.splice(i,1);else if(a=="rs")S.sel=[];
+else if(a=="chk")return chk();
+else if(a=="next"){S.sel=null;if(S.qi==Q.length-1)S.scr="r";else{S.qi++;S.scr=Q[S.qi].m!=q.m?"i":"q"}}
+else if(a=="back"){S.sel=null;S.qi--;S.scr="q"}
+else if(a=="rev")S.rev=!S.rev;else if(a=="tv")S.tv=!S.tv;else if(a=="ref")S.ref[i]=!S.ref[i];else if(a=="ck")S.chk[i]=!S.chk[i];
+else if(a=="fin")S.scr="f";else if(a=="res")S.scr="r";
+else if(a=="copy"){let s=st();try{navigator.clipboard.writeText(`${S.name}: ${s.c}/${Q.length} (${s.pc}%), ${s.pts}/${TOT} pts`)}catch(e){}}
+else if(a=="restart"){if(!confirm("Restart the game? All answers will be cleared."))return;Q.forEach(x=>delete x.o);Object.assign(S,{scr:"w",qi:0,name:"",res:{},sel:null,ref:{},chk:{},rev:0,tv:0})}
+R()}
+$("#app").onclick=e=>{let b=e.target.closest("[data-a]");if(b)act(b.dataset.a,b.dataset.i)};
+$("#app").onchange=e=>{if(e.target.dataset.m!==undefined){S.sel[e.target.dataset.m]=e.target.value;R()}};
+R();
+</script></body></html>
